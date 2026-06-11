@@ -1,0 +1,41 @@
+import time
+
+class BlockReactorPlant:
+    def __init__(self):
+        self.inlet_pressure = 0       # 0 PSI
+        self.intake_chamber = 0       # Isolated mid-stage
+        self.core_pressure = 3500     # Supercritical Core
+        
+        # System Valve Registries
+        self.inlet_gate = "CLOSED"
+        self.core_injector = "CLOSED"
+        self.eq_valve = "CLOSED"
+
+    def run_intake_loop(self):
+        print("⚙️ System: Initiating BlockReactor High-Pressure Slurry Intake...")
+        
+        # Step 1: Draw Slurry In
+        self.inlet_gate = "OPEN"
+        print(f"[Step 1] Inlet Gate: {self.inlet_gate}. Milled slurry filling chamber at {self.inlet_pressure} PSI.")
+        time.sleep(1)
+        self.inlet_gate = "CLOSED"
+        
+        # Step 2: High Pressure Equalization
+        self.eq_valve = "OPEN"
+        self.intake_chamber = self.core_pressure
+        print(f"[Step 2] EQ Valve: {self.eq_valve}. Chamber equalized to Core Pressure: {self.intake_chamber} PSI.")
+        time.sleep(1)
+        
+        # Step 3: Zero-Differential Core Injection
+        if self.intake_chamber == self.core_pressure:
+            print("✓ Zero-Differential Pressure (ZDP) Confirmed across injector seat.")
+            self.core_injector = "OPEN"
+            print(f"[Step 3] Injector: {self.core_injector}. Slurry cleanly forced into Core Zone 1 via mechanical ram.")
+            time.sleep(1)
+            self.core_injector = "CLOSED"
+            self.eq_valve = "CLOSED"
+            print("✓ Slurry delivered. Core isolated. Intake loop reset successfully.\n")
+
+if __name__ == "__main__":
+    plant = BlockReactorPlant()
+    plant.run_intake_loop()
