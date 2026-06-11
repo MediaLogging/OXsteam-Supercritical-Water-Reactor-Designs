@@ -1,0 +1,58 @@
+# Aluminum-Supercritical Water (Al-SCW) Energetics Model
+### High-Volumetric Energy Density Alternative Systems Analysis
+
+This module documents the theoretical thermodynamic calculations, mass balances, and structural bottlenecks of utilizing a stoichiometric aluminum-water reaction inside a high-pressure supercritical core.
+
+---
+
+## 🧪 1. Chemical Kinematics & Stoichiometry
+
+The core power cycle relies on the direct oxidation of aluminum by water under supercritical conditions, stripping oxygen to produce aluminum oxide, hydrogen gas, and high-temperature thermal energy:
+
+$$2\text{Al} + 3\text{H}_2\text{O} \rightarrow \text{Al}_2\text{O}_3 + 3\text{H}_2 + \text{Heat}$$
+
+### Mass Balance (400 lb Payload Model)
+A perfect stoichiometric ratio requires exactly 1.5 parts water to 1 part aluminum by mole. For a 400 lb system allocation:
+* **Reactant A (Fuel):** 200 lbs (~90.72 kg) Pure Aluminum 
+* **Reactant B (Oxidizer):** 200 lbs (~90.72 kg) Water ($H_2O$)
+
+---
+
+## ⚡ 2. Thermodynamic Energy Yield Breakdown
+
+The system yields energy via two distinct stages: primary internal oxidation and secondary external hydrogen combustion.
+
+### Stage 1: Primary Oxidation (Internal Reactor Heat)
+The direct oxidation of 90.72 kg of aluminum releases a specific energy density of approximately 15.1 MJ/kg.
+$$\text{Energy}_{\text{oxidation}} = 90.72\text{ kg} \times 15.1\text{ MJ/kg} \approx 1.37\text{ GJ (Gigajoules)}$$
+
+### Stage 2: Secondary Combustion (Hydrogen Plume)
+The reaction yields approximately 11.1% of its total reactant mass as hydrogen gas ($H_2$), resulting in roughly 10.08 kg of net hydrogen output. Utilizing atmospheric oxygen to burn this hydrogen yields:
+$$\text{Energy}_{\text{combustion}} = 10.08\text{ kg} \times 142\text{ MJ/kg (HHV)} \approx 1.43\text{ GJ}$$
+
+### Cumulative Energy Profile
+* **Total Gross Chemical Potential:** **2.80 GJ**
+* **Continuous Power Output (over 400-hour global transit model):**
+$$\text{Power}_{\text{continuous}} = \frac{2,800,000,000\text{ Joules}}{400\text{ hr} \times 3,600\text{ s/hr}} \approx 1,944\text{ Watts}$$
+
+---
+
+## ⚠️ 3. Real-World Mechanical & Material Bottlenecks
+
+While the energetic calculations balance mathematically on paper, physical deployment faces critical material science constraints:
+
+### A. The Invariant Mass Penalty
+Unlike conventional hydrocarbon engines that shed weight as fuel is consumed, an Al-SCW closed-core system cannot lose mass. The oxygen atoms from the water permanently bond with the aluminum to form heavy solid aluminum oxide ($Al_2O_3$) ash. 
+* **Takeoff Mass:** 400 lbs
+* **Landing Mass:** 400 lbs
+* **Impact:** The vehicle cannot optimize its aerodynamic glide ratio or reduce induced drag over time because the dead-weight profile remains completely static throughout the flight duration.
+
+### B. Pressure Vessel Mass vs. Tensile Limits
+Operating a water loop up to extreme pressures (approaching a theoretical 100,000 PSI limit) requires extreme structural containment. According to thick-walled cylinder mechanics (Lamé's equations), the required wall thickness ($t$) for a cylinder under internal pressure ($P$) given an allowable material tensile strength ($\sigma$) is defined by:
+
+$$\frac{r_o}{r_i} = \sqrt{\frac{\sigma + P}{\sigma - P}}$$
+
+* **The Physics Constraint:** As $P$ approaches $\sigma$, the required outer radius ($r_o$) approaches infinity. Even using premium Grade 5 Titanium ($\sigma \approx 130,000\text{ PSI}$), containing ultra-high internal pressures requires a containment vessel so thick that the structural dry mass completely eclipses the lift-to-drag capability of a lightweight aerial vehicle.
+
+### C. Kinetic Venting Inefficiency
+Expelling ultra-high-pressure steam directly through narrow nozzles creates severe acoustic noise pollution and kinetic shockwaves. At low atmospheric flight speeds (~100 km/h), high-velocity jet venting suffers from incredibly poor propulsive efficiency, wasting the vast majority of the 1,944 Watts as sound and thermal dissipation rather than turning it into effective forward thrust.
