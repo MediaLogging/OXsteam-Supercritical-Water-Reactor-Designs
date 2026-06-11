@@ -1,0 +1,68 @@
+import time
+
+class OxSteamLockHopper:
+    def __init__(self):
+        # Pressure registers (PSI)
+        self.core_pressure = 3500
+        self.chamber_A = 0
+        self.chamber_B = 0
+        self.chamber_C = 0
+        
+        # Valve States (False = CLOSED, True = OPEN)
+        self.v1 = False
+        self.v2 = False
+        self.v3 = False
+        self.v4 = False
+        self.eq1 = False
+
+    def enforce_miss_interlocks(self):
+        """Enforces the Mechanical Interlock Safety System rules."""
+        open_valves = [self.v1, self.v2, self.v3, self.v4].count(True)
+        if open_valves > 1:
+            raise SystemExit("🚨 MISS CRITICAL FAILURE: More than 1 main valve open! Emergency Pressure Lock Activated.")
+        return "🛡️ MISS Status: Secure (3-Valve Redundancy Maintained)"
+
+    def cycle_sequence(self):
+        print("⚡ Initiating OxSteam Fast Micro-Batch Sequence...")
+        
+        # Step 1: Equalize Chamber A
+        print("\n[Step 1] Opening EQ-1 to equalize Upper Chamber...")
+        self.eq1 = True
+        self.chamber_A = self.core_pressure
+        time.sleep(1) # Simulating sensor verification delay
+        print(f"Chamber A Pressure: {self.chamber_A} PSI | Core Pressure: {self.core_pressure} PSI")
+        
+        # Verify Zero-Differential Pressure (ZDP)
+        if self.chamber_A == self.core_pressure:
+            print("✓ ZDP Verified. Actuating Main Valve 1 under zero load.")
+            self.v1 = True
+            print(self.enforce_miss_interlocks())
+            time.sleep(1)
+            self.v1 = False
+            self.eq1 = False
+            print("✓ Core solids successfully dropped to Chamber A. V1 Sealed.")
+
+        # Step 2: Cascade to Chamber B
+        print("\n[Step 2] Initiating Chamber A-to-B Cascade...")
+        # Simulating equalized step-down pressure drop
+        self.chamber_A = 1500
+        self.chamber_B = 1500
+        self.v2 = True
+        print(self.enforce_miss_interlocks())
+        time.sleep(1)
+        self.v2 = False
+        print("✓ Solids dropped to Chamber B. V2 Sealed.")
+        
+        # Step 3: Final Discharge
+        print("\n[Step 3] Venting Chamber C to 0 PSI for atmospheric discharge...")
+        self.chamber_C = 0
+        self.v4 = True
+        print(self.enforce_miss_interlocks())
+        time.sleep(1)
+        self.v4 = False
+        print("✓ Mineral Oxides safely discharged onto atmospheric vibration conveyor.")
+        print("🔄 Sequence complete. Resetting loop.\n")
+
+if __name__ == "__main__":
+    reactor = OxSteamLockHopper()
+    reactor.cycle_sequence()
