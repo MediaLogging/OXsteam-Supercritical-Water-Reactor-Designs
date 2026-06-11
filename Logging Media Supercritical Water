@@ -1,0 +1,46 @@
+import time
+
+class BlockReactorIntake:
+    def __init__(self):
+        self.atmospheric_inlet = 0     # 0 PSI
+        self.intake_chamber = 0         # Variable Chamber
+        self.reactor_core = 3500        # 3,500 PSI Core
+        
+        # Intake Array Valve States (False = CLOSED, True = OPEN)
+        self.inlet_gate = False
+        self.core_injector = False
+        self.eq_line = False
+
+    def trigger_sequence(self):
+        print("⚙️ System: Initializing BlockReactor Intake Slurry Cycle...")
+        
+        # Step 1: Draw Slurry In
+        print("\n[Step 1] Opening Atmospheric Inlet Gate...")
+        self.inlet_gate = True
+        print("-> Milled trash slurry filling intake chamber at 0 PSI.")
+        time.sleep(1)
+        self.inlet_gate = False
+        print("✓ Chamber Loaded. Inlet Gate sealed to prevent blowback.")
+
+        # Step 2: High Pressure Equalization
+        print("\n[Step 2] Actuating EQ Line from reactor core...")
+        self.eq_line = True
+        self.intake_chamber = self.reactor_core
+        time.sleep(1)
+        print(f"-> Intake Chamber Pressurized to: {self.intake_chamber} PSI")
+
+        # Step 3: Zero-Differential Core Injection
+        if self.intake_chamber == self.reactor_core:
+            print("✓ Zero-Differential Pressure (ZDP) Confirmed across injector seat.")
+            print("[Step 3] Opening Core Injector Valve...")
+            self.core_injector = True
+            print("-> Slurry cleanly forced into Supercritical Core (Zone 1) via mechanical ram.")
+            time.sleep(1)
+            self.core_injector = False
+            self.eq_line = False
+            print("✓ Slurry delivered. Core Injector safely isolated.")
+            print("🔄 Intake loop reset successfully.\n")
+
+if __name__ == "__main__":
+    plant_intake = BlockReactorIntake()
+    plant_intake.trigger_sequence()
