@@ -1,0 +1,13 @@
+# OxSteam Hardware Compatibility Registry
+
+## 🎛️ Primary Core Isolation Valves (V1, V2, V3)
+*Requirements: Metal-to-metal seating, high-frequency cycle rating, positive shearing force.*
+
+*   **Everlasting Valve Company (Severe Service Line):** Self-Lapping Rotating Disc Valves. The rotating action shears directly through abrasive mineral cakes, wearing the seat "in" over time.
+*   **Mogas Industries (RSV Series):** Metal-Seated Ball Valves designed for extreme high-temperature, mining autoclave slurry isolation.
+
+## 🎚️ Pressure-Equalization Bypass Valves (EQ-1, EQ-2, EQ-3)
+*Requirements: Multi-stage anti-cavitation trim to prevent flash-steam wire-drawing.*
+
+*   **Flowserve Corporation (Valtek TigerTooth):** Uses multi-staged concentric grooves to drop pressure incrementally through fluid friction.
+*   **Emerson Automation Solutions (Fisher Cavitrol / NotchFlo):** Advanced trim geometries designed to safely manage multi-phase liquid flashing across extreme pressure differentials.
