@@ -1,0 +1,27 @@
+# OxSteam System Component Compatibility Registry
+
+This document registers standard severe-service hardware lines verified to meet the mechanical and thermal requirements of the OxSteam Cascading Intake (OSCI) process layout.
+
+## 🎛️ Primary Core Isolation Valves (V1, V2, V3, V4)
+*Requirements: Metal-to-metal seating, high-frequency cycle rating, positive shearing force capacity to cut through packed mineral cakes.*
+
+### Option A: Everlasting Valve Company (Severe Service Line)
+* **Type:** Self-Lapping Rotating Disc Valves.
+* **Why it fits:** The rotating disc action shears directly through abrasive graphite flakes and olivine flour. The seat wears "in" rather than wearing "out" during the 60-second micro-batch purge cycles.
+
+### Option B: Mogas Industries (RSV Series)
+* **Type:** Metal-Seated Ball Valves.
+* **Why it fits:** Engineered explicitly for high-temperature, high-pressure solid slurry isolation in mining autoclaves and extreme chemical reactors.
+
+### Option C: SchuF Fetterolf (Ram Bottom-Outlet Series)
+* **Type:** Custom Ram/Disc Valves.
+* **Why it fits:** Dead-space free designs that prevent abrasive battery metal oxides from bridging or compacting in the dead zones of the valve body.
+
+## 🎚️ Pressure-Equalization Bypass Valves (EQ-1, EQ-2, EQ-3)
+*Requirements: Multi-stage anti-cavitation trim to prevent high-velocity flash-steam wire-drawing.*
+
+### Option A: Flowserve Corporation (Valtek TigerTooth)
+* **Trim Tech:** Multi-staged concentric grooves that drop pressure incrementally through fluid friction, eliminating cavitation during the chamber step-down phase.
+
+### Option B: Emerson Automation Solutions (Fisher Cavitrol / NotchFlo)
+* **Trim Tech:** Hex Trim and Whisper technology designed to safely manage multi-phase liquid flashing and severe fluid velocity across extreme pressure differentials.
