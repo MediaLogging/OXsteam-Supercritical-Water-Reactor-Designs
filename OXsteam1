@@ -1,0 +1,4 @@
+### Exhaust Automation Architecture (v2.1.0)
+*   **Zero-Wear Main Stream**: `MainValve_1`, `MainValve_2`, and `MainValve_3` open and close only when fluid velocity is static (zero-differential flow), avoiding seat degradation.
+*   **Sacrificial Wear Branch**: Choked-flow pressure flashing is isolated strictly to `WearValve_D`.
+*   **Hot-Swapping**: Engaging `WearValve_Maint_Req` closes pristine upstream guard valve `IsolationValve_C`. This seals high-pressure fluid away entirely, allowing complete inline maintenance of the wear loop without causing reactor core downtime.
