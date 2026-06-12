@@ -1,0 +1,18 @@
+### Architectural Update: Dual-Redundancy Intake & Zero-Wear Exhaust
+
+This release introduces the firmware and structural layout for the `v2.1.0` hybrid reactor core management loop, balancing continuous mass feed with zero-wear pressure boundary isolation.
+
+#### 🔄 Upstream Intake Upgrades (Pump & Valve Hybrid)
+To eliminate intake clogging and provide hot-swap redundancy, the core now features a dual parallel intake:
+* **Primary Feed**: A high-displacement positive displacement slurry pump running continuously, pushing 20-25% solid "trash" slurry into the supercritical core under constant pressure.
+* **Secondary Backup**: An isolated, valve-gated lock-hopper line running in parallel. If the primary pump requires plunger packing maintenance, the system swings to cyclical gravity valve-feeding without dropping reactor pressure or interrupting the thermal cycle.
+
+#### 🛑 Downstream Exhaust Upgrades (4 Valves / 3 Chambers)
+Implements a strict Double Block-and-Bleed (DBB) isolation matrix to manage precipitated metal oxides and ash:
+* **Main Valves 1, 2, and 3**: Full-port, through-conduit gate valves that experience zero pressure drop and zero fluid turbulence when open. They cycle strictly under static, zero-differential conditions.
+* **Bleed Path (Isolation C & Wear Valve D)**: High-velocity choked flow and catastrophic "wire-drawing" erosion are isolated entirely to a smaller side-tube containing a sacrificial, carbide-coated needle valve (D).
+* **Hot-Swapping**: Closing the pristine upstream isolation valve (C) permits inline replacement of the degraded wear valve (D) mid-cycle without reactor shutdown.
+
+#### 📂 Source Material in this Release
+* `firmware/plc/src/ExhaustSequence.st`: Full IEC 61131-3 Structured Text PLC automation code with hardcoded safety interlocks to prevent high-pressure blowouts.
+* `README.md`: Complete P&ID mechanical flow routing diagram and state machine logic matrix.
