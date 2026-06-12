@@ -1,0 +1,57 @@
+{
+  "system": "OXsteam SCWR",
+  "subsystem": "Exhaust Solids Fractionation & Hot-Swap Valve Matrix",
+  "protocol": "Modbus TCP/IP",
+  "base_addressing": "0-based (holding registers 40001+)",
+  "registers": [
+    {
+      "address": 0,
+      "variable_name": "CurrentState",
+      "type": "INT",
+      "description": "0=INIT, 1=SETTLE_OXIDES, 2=ISOLATE_CHAMBER_1, 3=BLEED_PRESSURE, 4=TRANSFER_CHAMBER_2, 5=ISOLATE_CHAMBER_2, 6=DISCHARGE_FINAL, 7=WEAR_VALVE_MAINT",
+      "access": "RO"
+    },
+    {
+      "address": 1,
+      "variable_name": "Chamber1_Pressure",
+      "type": "REAL (32-bit Float)",
+      "description": "Pressure tracking value inside primary oxide settling zone (MPa)",
+      "access": "RO"
+    },
+    {
+      "address": 3,
+      "variable_name": "Valve_Coil_Status_Byte",
+      "type": "BYTE",
+      "description": "Bitmask values for actuator states: Bit0=Main1, Bit1=Main2, Bit2=Main3, Bit3=Isol_C, Bit4=Wear_D",
+      "access": "RO"
+    },
+    {
+      "address": 4,
+      "variable_name": "SafetyInterlockFault",
+      "type": "BOOL",
+      "description": "Active system trip tracking indicator. 1 = Interlock Breach Triggered",
+      "access": "RO"
+    },
+    {
+      "address": 100,
+      "variable_name": "WearValve_Maint_Req",
+      "type": "BOOL",
+      "description": "HMI Command Button: Closes Isolation Valve C to permit hot-swapping",
+      "access": "RW"
+    },
+    {
+      "address": 101,
+      "variable_name": "WearValve_Maint_Done",
+      "type": "BOOL",
+      "description": "HMI Command Button: Confirms replacement valve is pressure-tested",
+      "access": "RW"
+    },
+    {
+      "address": 200,
+      "variable_name": "CycleTimerPreset_Sec",
+      "type": "INT",
+      "description": "Adjustable processing delay time before dropping solids out of reactor core (Seconds)",
+      "access": "RW"
+    }
+  ]
+}
